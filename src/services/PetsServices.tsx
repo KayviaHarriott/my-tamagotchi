@@ -17,22 +17,24 @@ export const fetchPetData = async (id: number): Promise<Pet> => {
 
 export const updateHunger = async (id: number, newHunger: number) => {
   try {
+    //TODO: Add partial update, 
+    console.log(newHunger ? "" : "")
     const data = await axios
       .get("http://localhost:8000/api/pets/1/?format=json")
       .then((r) => r.data);
-      console.log(data)
-    await axios.put("http://localhost:8000/api/pets/1/", {
-      "id": 1,
-      "name": "Bobby",
-      "species": "Hamster",
-      "age": 2,
-      "status": "DEAD",
-      "health_level": 100,
-      "hunger_level": 100,
-      "happiness_level": 100,
-      "bathroom_level": 100,
-      "friendliness": 90
-  });
+    console.log(data);
+    await axios.put(`http://localhost:8000/api/pets/${id}/`, {
+      id: 1,
+      name: "Bobby",
+      species: "Hamster",
+      age: 2,
+      status: "DEAD",
+      health_level: 100,
+      hunger_level: 100,
+      happiness_level: 100,
+      bathroom_level: 100,
+      friendliness: 90,
+    });
 
     console.log(data);
 

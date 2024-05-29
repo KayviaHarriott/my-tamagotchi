@@ -1,9 +1,9 @@
 import { ProgressBar } from "./ProgressBar";
 interface StatsProps {
-  health_level: number;
-  happiness_level: number;
-  hunger_level: number;
-  bathroom_level: number;
+  health_level: number | undefined;
+  happiness_level: number | undefined;
+  hunger_level: number | undefined;
+  bathroom_level: number | undefined;
 }
 export const Stats: React.FC<StatsProps> = ({
   happiness_level,
@@ -41,7 +41,7 @@ export const Stats: React.FC<StatsProps> = ({
             {stats.map((item, index) => (
               <div className="flex flex-col" key={index}>
                 <h4 className="font-semibold text-[12px]">{item.label}</h4>
-                <ProgressBar progress={item.progress} />
+                <ProgressBar progress={item.progress ? item.progress : 0} />
               </div>
             ))}
           </div>
@@ -52,7 +52,7 @@ export const Stats: React.FC<StatsProps> = ({
             {secondaryStats.map((item, index) => (
               <div className="flex flex-col" key={index}>
                 <h4 className="font-semibold text-[12px]">{item.label}</h4>
-                <ProgressBar progress={item.progress} />
+                <ProgressBar progress={item.progress ? item.progress : 0} />
               </div>
             ))}
           </div>

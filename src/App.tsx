@@ -3,7 +3,10 @@ import "./App.css";
 import { Stats } from "./components/Stats";
 import { Commands } from "./components/Commands";
 import { useEffect, useState } from "react";
-import { fetchPetData, updateHunger } from "./services/PetsServices";
+import { fetchPetData, 
+  // updateHunger 
+
+} from "./services/PetsServices";
 import { Pet } from "./models/Pet";
 function App() {
   const [petData, setPetData] = useState<Pet | undefined>(undefined);
@@ -56,14 +59,15 @@ function App() {
                     <p>Walk</p>
                   </div>
                 </div>
-                {petData && (
+
+       
                   <Stats
-                    happiness_level={petData.happiness_level}
-                    health_level={petData.health_level}
-                    hunger_level={petData.hunger_level}
-                    bathroom_level={petData.bathroom_level}
+                    happiness_level={petData && petData.happiness_level}
+                    health_level={petData && petData.health_level}
+                    hunger_level={petData && petData.hunger_level}
+                    bathroom_level={petData && petData.bathroom_level}
                   />
-                )}
+                
               </div>
             </Box>
             <Box className="flex flex-col gap-4 pt-4 pl-4">
