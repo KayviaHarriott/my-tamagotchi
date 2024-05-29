@@ -4,7 +4,7 @@ import { TemporaryPopUp } from "./TemporaryPopUp";
 // import { Pet } from "../models/Pet";
 
 interface CommandsProps {
-  updatePetData: (id: number, field: string) => void;
+  updatePetData: (id: number, field: string, points: number) => void;
 }
 
 export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
@@ -18,7 +18,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
           buttonLabel: "Feed",
           icon: "/assets/images/food/carrot.png",
           against: "", //TODO: If gotchi feels a way, not to feed
-          point: 1,
+          point: 6,
         },
         {
           label: "Bean",
@@ -26,7 +26,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
           buttonLabel: "Feed",
           icon: "/assets/images/food/bean.png",
           against: "", //TODO: If gotchi feels a way, not to feed
-          point: 1,
+          point: 3,
         },
         {
           label: "Sunflower Seed",
@@ -34,7 +34,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
           buttonLabel: "Feed",
           icon: "/assets/images/food/sunflower_seed.png",
           against: "", //TODO: If gotchi feels a way, not to feed
-          point: 1,
+          point: 8,
         },
         {
           label: "Water",
@@ -50,7 +50,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
           buttonLabel: "Feed",
           icon: "/assets/images/food/nutrient_water.png",
           against: "", //TODO: If gotchi feels a way, not to feed
-          point: 1,
+          point: 10,
         },
       ],
     },
@@ -59,7 +59,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
       actions: [
         {
           label: "Pet",
-          action: "/food",
+          action: "/action",
           buttonLabel: "Do",
           icon: "",
           against: "", //TODO: If gotchi feels a way, not to feed
@@ -67,7 +67,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
         },
         {
           label: "Talk To",
-          action: "/food",
+          action: "/action",
           buttonLabel: "Do",
           icon: "",
           against: "", //TODO: If gotchi feels a way, not to feed
@@ -80,7 +80,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
       actions: [
         {
           label: "Sit",
-          action: "/sit",
+          action: "/trick", //"/sit",
           buttonLabel: "Do",
           icon: "",
           against: "", //TODO: If gotchi feels a way, not to feed
@@ -88,7 +88,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
         },
         {
           label: "Speak",
-          action: "/speak",
+          action: "/trick", // "/speak",
           buttonLabel: "Do",
           icon: "",
           against: "", //TODO: If gotchi feels a way, not to feed
@@ -96,11 +96,11 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
         },
         {
           label: "Roll Over",
-          action: "/roll-over",
+          action: "/trick",  //"/roll-over",
           buttonLabel: "Do",
           icon: "",
           against: "", //TODO: If gotchi feels a way, not to feed
-          point: 1,
+          point: 5,
         },
       ],
     },
@@ -121,7 +121,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
                     borderRadius: 1,
                   }}
                   className="flex flex-col justify-between gap-2 p-2 cursor-pointer"
-                  onClick={() => updatePetData(1, action.action)}
+                  onClick={() => updatePetData(1, action.action, action.point)}
                 >
                   <TemporaryPopUp
                     content={

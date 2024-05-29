@@ -3,12 +3,14 @@ interface StatsProps {
   health_level: number | undefined;
   happiness_level: number | undefined;
   hunger_level: number | undefined;
+  thirst_level: number | undefined;
   bathroom_level: number | undefined;
 }
 export const Stats: React.FC<StatsProps> = ({
   happiness_level,
   health_level,
   hunger_level,
+  thirst_level,
   bathroom_level,
 }) => {
   const stats = [
@@ -24,8 +26,12 @@ export const Stats: React.FC<StatsProps> = ({
   ];
   const secondaryStats = [
     {
-      label: "Hunger",
+      label: "Belly",
       progress: hunger_level,
+    },
+    {
+      label: "Thirst",
+      progress: thirst_level,
     },
     {
       label: "Bathroom",

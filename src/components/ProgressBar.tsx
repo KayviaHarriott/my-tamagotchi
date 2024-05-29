@@ -13,6 +13,7 @@ function LinearProgressWithLabel(
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Box sx={{ width: "100%", mr: 1 }}>
+        {/* To change color based on stat active, hunger should be red  */}
         <LinearProgress
           sx={{ color: `${props.value > 80 ? "green" : props.value > 50 ? "orange" : props.value > 0 ? "red" : "grey"}` }}
           color="inherit"

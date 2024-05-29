@@ -5,7 +5,8 @@ export interface Pet {
   age: number,
   status: STATUS,
   health_level: number,
-  hunger_level: number
+  hunger_level: number,
+  thirst_level: number
   happiness_level: number,
   bathroom_level: number,
   friendliness: number

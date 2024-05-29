@@ -28,26 +28,40 @@ function App() {
     fetchData();
   }, []);
 
-  const handleUpdatePetData = async (id: number, field: string) => {
+  const handleUpdatePetData = async (
+    id: number,
+    field: string,
+    points: number
+  ) => {
     if (!petData) return;
 
     try {
       let updatedFields: Partial<Pet> = {};
-
+      //add preventative to go over 100
       switch (field) {
         case "/food":
-          updatedFields = { hunger_level: petData.hunger_level + 1 };
+          petData.hunger_level! <= 101
+            ? (updatedFields = { hunger_level: petData.hunger_level + points })
+            : null;
+          break;
+        case "/drink":
+          petData.thirst_level <= 101
+            ? (updatedFields = { thirst_level: petData.thirst_level + points })
+            : null;
+          break;
+        case "/trick":
+          updatedFields = {
+            hunger_level: petData.hunger_level - points,
+            thirst_level: petData.thirst_level - points,
+          };
           break;
       }
 
       await updatePetById(id, updatedFields);
       setPetData((prevState: Pet | undefined) => ({
-        ...(prevState || {} as Pet), 
+        ...(prevState || ({} as Pet)),
         ...updatedFields,
       }));
-      
-      
-      
     } catch (error) {
       console.error("Error updating pet data:", error);
     }
@@ -78,7 +92,7 @@ function App() {
                   />
                 </Box>
               </div>
-              <div className="w-full flex justify-between">
+              <div className="w-full flex flex-col justify-between">
                 <div>
                   <p>Management</p>
                   <div className="flex gap-2 overflow-x-auto">
@@ -93,6 +107,7 @@ function App() {
                   health_level={petData && petData.health_level}
                   hunger_level={petData && petData.hunger_level}
                   bathroom_level={petData && petData.bathroom_level}
+                  thirst_level={petData && petData.thirst_level}
                 />
               </div>
             </Box>

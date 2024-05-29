@@ -47,19 +47,3 @@ export const updatePetById = async (
     console.error("Error updating hunger:", error);
   }
 };
-
-
-   // switch(newPetData):
-          //   case("happiness_level"):
-          //     break
-          // newPetData,
-          // id: 1,
-          // name: "Bobby",
-          // species: "Hamster",
-          // age: 2,
-          // status: "DEAD",
-          // health_level: 100,
-          // hunger_level: 5,
-          // happiness_level: 5,
-          // bathroom_level: data.bathroom_level + 1,
-          // friendliness: 5,
