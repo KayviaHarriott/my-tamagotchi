@@ -69,7 +69,7 @@ export const Commands = () => {
   return (
     <div>
       <h3 className="text-[14px] font-bold text-[gray]">Commands</h3>
-      <div className="flex flex-col gap-2 h-[120px]"> {/* overflow-x-auto bg-[lightgray]"> */}
+      <div className="flex flex-col gap-2 "> {/* overflow-x-auto bg-[lightgray]"> */}
         {commands.map((item, index) => (
           <div key={index}>
             <h4 className="font-bold">{item.label}</h4>
