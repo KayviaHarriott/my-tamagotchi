@@ -13,7 +13,12 @@ function LinearProgressWithLabel(
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Box sx={{ width: "100%", mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
+        <LinearProgress
+          sx={{ color: `${props.value > 80 ? "green" : props.value > 50 ? "orange" : "red"}` }}
+          color="inherit"
+          variant="determinate"
+          {...props}
+        />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
@@ -38,7 +43,12 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
 
   return (
     <Box
-      sx={{ width: "120px", backgroundColor: "lightblue", borderRadius: 2, px: 2 }}
+      sx={{
+        width: "120px",
+        // backgroundColor: "lightblue",
+        borderRadius: 2,
+        // px: 2,
+      }}
     >
       {/* <LinearProgressWithLabel value={progress} /> */}
       <LinearProgressWithLabel value={progress} />

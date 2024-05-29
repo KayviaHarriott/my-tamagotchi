@@ -6,6 +6,7 @@ export const Commands = () => {
         {
           label: "Carrot",
           action: "/food",
+          icon: "/assets/images/food/carrot.png",
           against: "", //TODO: If gotchi feels a way, not to feed
         },
         {
@@ -69,7 +70,9 @@ export const Commands = () => {
   return (
     <div>
       <h3 className="text-[14px] font-bold text-[gray]">Commands</h3>
-      <div className="flex flex-col gap-2 "> {/* overflow-x-auto bg-[lightgray]"> */}
+      <div className="flex flex-col gap-2 ">
+        {" "}
+        {/* overflow-x-auto bg-[lightgray]"> */}
         {commands.map((item, index) => (
           <div key={index}>
             <h4 className="font-bold">{item.label}</h4>
@@ -77,8 +80,14 @@ export const Commands = () => {
               {/* TODO: Seperate drinks from food */}
               {item.actions.map((item, index) => (
                 <div key={index} className="flex flex-col items-center">
-                  <p>I</p>
-                  <h5 className="text-[12px]">{item.label}</h5>
+                  <p>
+                    {item.icon ? (
+                      <img className="w-[24px]" src={`${item.icon}`} />
+                    ) : (
+                      "I"
+                    )}
+                  </p>
+                  <h5 className="text-[12px] font-bold text-[gray]">{item.label}</h5>
                 </div>
               ))}
             </div>

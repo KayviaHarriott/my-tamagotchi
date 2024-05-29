@@ -3,7 +3,7 @@ import "./App.css";
 import { Stats } from "./components/Stats";
 import { Commands } from "./components/Commands";
 import { useEffect, useState } from "react";
-import { fetchPetData } from "./services/PetsServices";
+import { fetchPetData, updateHunger } from "./services/PetsServices";
 import { Pet } from "./models/Pet";
 function App() {
   const [petData, setPetData] = useState<Pet | undefined>(undefined);
@@ -11,18 +11,20 @@ function App() {
     const fetchData = async () => {
       try {
         console.log("Running...");
-        const response = await fetchPetData({ id: 1 });
+      //  console.log( await updateHunger(1, 20))
+      //  await updateHunger(1, 90)
+        const response = await fetchPetData(1);
+        // const response2 = await updateHunger(1, 70);
         setPetData(response);
+        // console.log(response);
         console.log("Ran.");
-        // Do something with the response
       } catch (error) {
-        // Handle errors
         console.error("Error fetching pet data:", error);
       }
     };
 
-    fetchData(); // Call the async function immediately
-  }, []); // Empty dependency array means this effect runs only once on mount
+    fetchData();
+  }, []);
 
   return (
     <>
