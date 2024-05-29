@@ -32,7 +32,6 @@ export const TemporaryPopUp: React.FC<TemporaryPopUpProps> = ({ content }) => {
   return (
     <Box sx={{}}>
       <Popper
-        // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
         sx={{ zIndex: 1200 }}
         open={open}
         anchorEl={anchorEl}

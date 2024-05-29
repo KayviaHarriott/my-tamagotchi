@@ -27,13 +27,14 @@ export const fetchPetById = async (id: number): Promise<Pet> => {
 };
 
 /**Function to update based on id */
-export const updateHunger = async (id: number, newHunger: number) => {
+export const updatePetById = async (id: number, newPetData: Pet) => {
   try {
     //TODO: Add partial update,
-    console.log(newHunger ? "" : "");
     const data = await axios
       .get(`${PETS_URL}/${id}/?format=json`)
       .then((r) => r.data);
+
+    
     data != null
       ? await axios.put(`${PETS_URL}/${id}/`, {
           id: 1,
