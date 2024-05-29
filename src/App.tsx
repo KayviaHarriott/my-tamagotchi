@@ -3,24 +3,20 @@ import "./App.css";
 import { Stats } from "./components/Stats";
 import { Commands } from "./components/Commands";
 import { useEffect, useState } from "react";
-import { fetchPetData, 
-  // updateHunger 
-
+import {
+  fetchPetById,
+  // fetchPets,
+  // updateHunger
 } from "./services/PetsServices";
 import { Pet } from "./models/Pet";
+
 function App() {
   const [petData, setPetData] = useState<Pet | undefined>(undefined);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("Running...");
-      //  console.log( await updateHunger(1, 20))
-      //  await updateHunger(1, 90)
-        const response = await fetchPetData(1);
-        // const response2 = await updateHunger(1, 70);
+        const response = await fetchPetById(1);
         setPetData(response);
-        // console.log(response);
-        console.log("Ran.");
       } catch (error) {
         console.error("Error fetching pet data:", error);
       }
@@ -48,6 +44,10 @@ function App() {
                 <p className="text-center">BobbyTv</p>
                 <Box className="flex bg-[lightgray] h-[200px]">
                   {/* <p>GotchiHere</p> */}
+                  <img
+                    className="w-[64px] h-[64px]"
+                    src={`/assets/images/pets/hamster.png`}
+                  />
                 </Box>
               </div>
               <div className="w-full flex justify-between">
@@ -60,14 +60,12 @@ function App() {
                   </div>
                 </div>
 
-       
-                  <Stats
-                    happiness_level={petData && petData.happiness_level}
-                    health_level={petData && petData.health_level}
-                    hunger_level={petData && petData.hunger_level}
-                    bathroom_level={petData && petData.bathroom_level}
-                  />
-                
+                <Stats
+                  happiness_level={petData && petData.happiness_level}
+                  health_level={petData && petData.health_level}
+                  hunger_level={petData && petData.hunger_level}
+                  bathroom_level={petData && petData.bathroom_level}
+                />
               </div>
             </Box>
             <Box className="flex flex-col gap-4 pt-4 pl-4">
