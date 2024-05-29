@@ -3,8 +3,35 @@ import {
   // Button
 } from "@mui/material";
 import { TemporaryPopUp } from "./TemporaryPopUp";
+// import { useEffect } from "react";
+import {
+  fetchPetById,
+  // fetchPetById,
+  updatePetById,
+} from "../services/PetsServices";
+// // import axios from "axios";
+// import { Pet } from "../models/Pet";
 
 export const Commands = () => {
+  const updatePetData = async (id: number, field: string) => {
+    try {
+      const currentData = await fetchPetById(id);
+      console.log(currentData);
+
+      switch (field) {
+        case "/food":
+          console.log("Here");
+          console.log(currentData.hunger_level + 10);
+          await updatePetById(1, { hunger_level: currentData.hunger_level + 1 });
+          break;
+      }
+      console.log("Pet data updated successfully", "response");
+    } catch (error) {
+      console.error("Error updating pet data:", error);
+      throw error;
+    }
+  };
+
   const commands = [
     {
       label: "Food",
@@ -125,7 +152,10 @@ export const Commands = () => {
                 >
                   <TemporaryPopUp
                     content={
-                      <div className="flex flex-col items-center">
+                      <div
+                        className="flex flex-col items-center"
+                        onClick={() => updatePetData(1, item.action)}
+                      >
                         <p>
                           {item.icon ? (
                             <img className="w-[24px]" src={`${item.icon}`} />

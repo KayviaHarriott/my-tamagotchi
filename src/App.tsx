@@ -5,6 +5,7 @@ import { Commands } from "./components/Commands";
 import { useEffect, useState } from "react";
 import {
   fetchPetById,
+  // updatePetById,
   // fetchPets,
   // updateHunger
 } from "./services/PetsServices";
@@ -16,6 +17,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await fetchPetById(1);
+       
         setPetData(response);
       } catch (error) {
         console.error("Error fetching pet data:", error);
@@ -35,7 +37,7 @@ function App() {
           </div>
         </Box>
         <Box className="flex flex-row justify-center items-center w-[100%] pt-[32px] ">
-          <Box className="flex flex-col sm:flex-row">
+          <Box className="flex flex-col lg:flex-row">
             <Box
               sx={{ border: "1px solid black", p: 2 }}
               className="sm:min-w-[500px] min-h-[300px] flex flex-col justify-between"

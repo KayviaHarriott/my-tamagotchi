@@ -27,30 +27,39 @@ export const fetchPetById = async (id: number): Promise<Pet> => {
 };
 
 /**Function to update based on id */
-export const updatePetById = async (id: number, newPetData: Pet) => {
+export const updatePetById = async (
+  id: number,
+  newPetData: Partial<Pet> | undefined
+) => {
   try {
     //TODO: Add partial update,
     const data = await axios
       .get(`${PETS_URL}/${id}/?format=json`)
       .then((r) => r.data);
 
-    
     data != null
-      ? await axios.put(`${PETS_URL}/${id}/`, {
-          id: 1,
-          name: "Bobby",
-          species: "Hamster",
-          age: 2,
-          status: "DEAD",
-          health_level: 5,
-          hunger_level: 5,
-          happiness_level: 5,
-          bathroom_level: 5,
-          friendliness: 5,
-        })
+      ? await axios.patch(`${PETS_URL}/${id}/`, 
+          newPetData,
+        )
       : null;
     console.log("Hunger updated successfully");
   } catch (error) {
     console.error("Error updating hunger:", error);
   }
 };
+
+
+   // switch(newPetData):
+          //   case("happiness_level"):
+          //     break
+          // newPetData,
+          // id: 1,
+          // name: "Bobby",
+          // species: "Hamster",
+          // age: 2,
+          // status: "DEAD",
+          // health_level: 100,
+          // hunger_level: 5,
+          // happiness_level: 5,
+          // bathroom_level: data.bathroom_level + 1,
+          // friendliness: 5,
