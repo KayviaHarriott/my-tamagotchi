@@ -14,7 +14,7 @@ export const Commands = () => {
           against: "", //TODO: If gotchi feels a way, not to feed
         },
         {
-          label: "Sunflower See",
+          label: "Sunflower Seed",
           action: "/food",
           against: "", //TODO: If gotchi feels a way, not to feed
         },
@@ -69,15 +69,17 @@ export const Commands = () => {
   return (
     <div>
       <h3 className="text-[14px] font-bold text-[gray]">Commands</h3>
-
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 h-[120px]"> {/* overflow-x-auto bg-[lightgray]"> */}
         {commands.map((item, index) => (
           <div key={index}>
-            <p className="font-bold">{item.label}</p>
+            <h4 className="font-bold">{item.label}</h4>
             <div className="flex gap-2">
               {/* TODO: Seperate drinks from food */}
               {item.actions.map((item, index) => (
-                <p key={index}>{item.label}</p>
+                <div key={index} className="flex flex-col items-center">
+                  <p>I</p>
+                  <h5 className="text-[12px]">{item.label}</h5>
+                </div>
               ))}
             </div>
           </div>

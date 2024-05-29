@@ -13,7 +13,7 @@ function App() {
             <p>Kay Harriott</p>
           </div>
         </Box>
-        <Box className="flex flex-col w-full items-center justify-center pt-[50px]">
+        <Box className="flex flex-col w-full items-center justify-center pt-[32px]">
           <Box
             sx={{ border: "1px solid black", p: 2 }}
             className="sm:min-w-[500px] min-h-[300px] flex flex-col justify-between"
@@ -24,8 +24,15 @@ function App() {
                 {/* <p>GotchiHere</p> */}
               </Box>
             </div>
-            <div className="w-full flex justify-end">
-              {" "}
+            <div className="w-full flex justify-between">
+              <div>
+                <p>Title</p>
+                <div className="flex gap-2 overflow-x-auto">
+                  <p>Sleep</p>
+                  <p>Wake Up</p>
+                  <p>Walk</p>
+                </div>
+              </div>
               <Stats />
             </div>
           </Box>
