@@ -1,37 +1,13 @@
-import {
-  Box,
-  // Button
-} from "@mui/material";
+import { Box } from "@mui/material";
 import { TemporaryPopUp } from "./TemporaryPopUp";
-// import { useEffect } from "react";
-import {
-  fetchPetById,
-  // fetchPetById,
-  updatePetById,
-} from "../services/PetsServices";
-// // import axios from "axios";
+// import { useState } from "react";
 // import { Pet } from "../models/Pet";
 
-export const Commands = () => {
-  const updatePetData = async (id: number, field: string) => {
-    try {
-      const currentData = await fetchPetById(id);
-      console.log(currentData);
+interface CommandsProps {
+  updatePetData: (id: number, field: string) => void;
+}
 
-      switch (field) {
-        case "/food":
-          console.log("Here");
-          console.log(currentData.hunger_level + 10);
-          await updatePetById(1, { hunger_level: currentData.hunger_level + 1 });
-          break;
-      }
-      console.log("Pet data updated successfully", "response");
-    } catch (error) {
-      console.error("Error updating pet data:", error);
-      throw error;
-    }
-  };
-
+export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
   const commands = [
     {
       label: "Food",
@@ -129,53 +105,40 @@ export const Commands = () => {
       ],
     },
   ];
+
   return (
     <div>
       <h3 className="text-[14px] font-bold text-[gray]">Commands</h3>
       <div className="flex flex-col gap-2 ">
-        {" "}
-        {/* overflow-x-auto bg-[lightgray]"> */}
         {commands.map((item, index) => (
           <div key={index}>
             <h4 className="font-bold">{item.label}</h4>
             <div className="flex gap-2">
-              {/* TODO: Seperate drinks from food */}
-              {item.actions.map((item, index) => (
+              {item.actions.map((action, index) => (
                 <Box
                   key={index}
                   sx={{
-                    // backgroundColor: "#F2FDFF",
                     borderRadius: 1,
                   }}
                   className="flex flex-col justify-between gap-2 p-2 cursor-pointer"
-                  onClick={() => console.log(item.point)}
+                  onClick={() => updatePetData(1, action.action)}
                 >
                   <TemporaryPopUp
                     content={
-                      <div
-                        className="flex flex-col items-center"
-                        onClick={() => updatePetData(1, item.action)}
-                      >
+                      <div className="flex flex-col items-center">
                         <p>
-                          {item.icon ? (
-                            <img className="w-[24px]" src={`${item.icon}`} />
+                          {action.icon ? (
+                            <img className="w-[24px]" src={`${action.icon}`} alt={action.label} />
                           ) : (
                             "I"
                           )}
                         </p>
                         <h5 className="text-[12px] font-medium text-center pt-1 text-[#286BB9]">
-                          {item.label}
+                          {action.label}
                         </h5>
                       </div>
                     }
                   />
-
-                  {/* <Button
-                    variant="contained"
-                    sx={{ boxShadow: "none", textTransform: "none" }}
-                  >
-                    {item.buttonLabel}
-                  </Button> */}
                 </Box>
               ))}
             </div>

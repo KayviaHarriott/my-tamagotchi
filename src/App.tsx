@@ -5,6 +5,7 @@ import { Commands } from "./components/Commands";
 import { useEffect, useState } from "react";
 import {
   fetchPetById,
+  updatePetById,
   // updatePetById,
   // fetchPets,
   // updateHunger
@@ -13,11 +14,11 @@ import { Pet } from "./models/Pet";
 
 function App() {
   const [petData, setPetData] = useState<Pet | undefined>(undefined);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetchPetById(1);
-       
         setPetData(response);
       } catch (error) {
         console.error("Error fetching pet data:", error);
@@ -26,6 +27,31 @@ function App() {
 
     fetchData();
   }, []);
+
+  const handleUpdatePetData = async (id: number, field: string) => {
+    if (!petData) return;
+
+    try {
+      let updatedFields: Partial<Pet> = {};
+
+      switch (field) {
+        case "/food":
+          updatedFields = { hunger_level: petData.hunger_level + 1 };
+          break;
+      }
+
+      await updatePetById(id, updatedFields);
+      setPetData((prevState: Pet | undefined) => ({
+        ...(prevState || {} as Pet), 
+        ...updatedFields,
+      }));
+      
+      
+      
+    } catch (error) {
+      console.error("Error updating pet data:", error);
+    }
+  };
 
   return (
     <>
@@ -72,7 +98,7 @@ function App() {
             </Box>
             <Box className="flex flex-col gap-4 pt-4 pl-4">
               {/* ToDo: Make a backpack where the items fall out */}
-              <Commands />
+              <Commands updatePetData={handleUpdatePetData} />
             </Box>
           </Box>
         </Box>
