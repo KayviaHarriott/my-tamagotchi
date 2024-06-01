@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { fetchPetById, updatePetById } from "./services/PetsServices";
 import { Pet } from "./models/Pet";
 import { PetSprite } from "./components/Pet";
+import { Behaviour } from "./functions/behavior";
 // import hamster_idle from "/assets/images/pets/hamster_idle.png";
 // import spriteSheet from './assets/images/pets/hamster_idle.png';
 // import background from "/assets/images/background/bedroom.png";
@@ -119,6 +120,7 @@ function App() {
             <Box className="flex flex-col gap-4 pt-4 pl-4">
               {/* ToDo: Make a backpack where the items fall out */}
               <Commands updatePetData={handleUpdatePetData} />
+              <Behaviour/>
             </Box>
           </Box>
         </Box>
