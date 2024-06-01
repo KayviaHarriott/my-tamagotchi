@@ -10,7 +10,7 @@ interface CommandsProps {
 export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
   const commands = [
     {
-      label: "Food",
+      label: "Feed",
       actions: [
         {
           label: "Carrot",
@@ -108,7 +108,7 @@ export const Commands: React.FC<CommandsProps> = ({ updatePetData }) => {
 
   return (
     <div>
-      <h3 className="text-[14px] font-bold text-[gray]">Commands</h3>
+      {/* <h3 className="text-[14px] font-bold text-[gray]">Commands</h3> */}
       <div className="flex flex-col gap-2 ">
         {commands.map((item, index) => (
           <div key={index}>

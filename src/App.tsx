@@ -1,16 +1,14 @@
 import { Box } from "@mui/material";
 import "./App.css";
+import "./styles/sprite.css";
 import { Stats } from "./components/Stats";
 import { Commands } from "./components/Commands";
 import { useEffect, useState } from "react";
-import {
-  fetchPetById,
-  updatePetById,
-  // updatePetById,
-  // fetchPets,
-  // updateHunger
-} from "./services/PetsServices";
+import { fetchPetById, updatePetById } from "./services/PetsServices";
 import { Pet } from "./models/Pet";
+import { PetSprite } from "./components/Pet";
+// import hamster_idle from "/assets/images/pets/hamster_idle.png";
+// import spriteSheet from './assets/images/pets/hamster_idle.png';
 
 function App() {
   const [petData, setPetData] = useState<Pet | undefined>(undefined);
@@ -86,15 +84,17 @@ function App() {
                 <p className="text-center">BobbyTv</p>
                 <Box className="flex bg-[lightgray] h-[200px]">
                   {/* <p>GotchiHere</p> */}
-                  <img
-                    className="w-[64px] h-[64px]"
-                    src={`/assets/images/pets/hamster.png`}
-                  />
+                  <PetSprite/>
+                  {/* <img
+                    className="w-[640px] h-[100px]"
+                    // hamster sprite
+                    src={hamster_idle}
+                  /> */}
                 </Box>
               </div>
               <div className="w-full flex flex-col justify-between">
                 <div>
-                  <p>Management</p>
+                  <p>Commands</p>
                   <div className="flex gap-2 overflow-x-auto">
                     <p>Sleep</p>
                     <p>Wake Up</p>

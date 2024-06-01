@@ -1,0 +1,22 @@
+.sprite-container {
+    display: flex;
+  }
+  
+  .sprite {
+    width: 64px;  
+    height: 64px; 
+    background-image: url('/assets/images/pets/hamster_idle.png');
+    background-repeat: no-repeat;
+  }
+  
+  /* Define the animation for character1 */
+  /* @keyframes character1-animation { */
+    /* from { background-position: 0 0; } */
+    /* to { background-position: -448px 0; }  */
+  /* } */
+  
+  /* .character1 { */
+    /* animation: character1-animation 1s steps(8) infinite; */
+  /* } */
+  
+  
