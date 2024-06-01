@@ -1,0 +1,10 @@
+.sprite-box {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    position: relative;
+    background-image: url('/assets/images/background/bedroom.png'); /* Adjust the path as needed */
+    background-size: 140px 70px; /* Adjust the size as needed */
+    background-position: 0 0;
+  }
+  
