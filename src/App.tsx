@@ -9,6 +9,7 @@ import { Pet } from "./models/Pet";
 import { PetSprite } from "./components/Pet";
 // import hamster_idle from "/assets/images/pets/hamster_idle.png";
 // import spriteSheet from './assets/images/pets/hamster_idle.png';
+// import background from "/assets/images/background/bedroom.png";
 
 function App() {
   const [petData, setPetData] = useState<Pet | undefined>(undefined);
@@ -82,14 +83,18 @@ function App() {
             >
               <div>
                 <p className="text-center">BobbyTv</p>
-                <Box className="flex bg-[lightgray] h-[200px]">
-                  {/* <p>GotchiHere</p> */}
-                  <PetSprite/>
-                  {/* <img
-                    className="w-[640px] h-[100px]"
-                    // hamster sprite
-                    src={hamster_idle}
-                  /> */}
+                <Box
+                  sx={{
+                    border: "1px solid black",
+                    backgroundImage: `url(/assets/images/background/bedroom.png)`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover", // Ensures the background image covers the entire box
+                    backgroundPosition: "center", // Centers the background image
+                    imageRendering: "pixelated",
+                  }}
+                  className="flex h-[250px]"
+                >
+                  <PetSprite />
                 </Box>
               </div>
               <div className="w-full flex flex-col justify-between">

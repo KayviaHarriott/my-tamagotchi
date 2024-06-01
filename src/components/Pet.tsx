@@ -4,7 +4,7 @@ import "../styles/sprite.css"
 
 export const PetSprite = () => {
   const [frame, setFrame] = useState(0);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 50 });
   const totalFrames = 7; 
   const frameWidth = 64; 
   const boxSize = 460; 
